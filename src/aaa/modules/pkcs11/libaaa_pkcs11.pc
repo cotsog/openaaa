@@ -1,0 +1,10 @@
+# pkg-config metadata for libaaa_pkcs11
+libdir=@LIBDIR@
+incdir=.
+
+Name: libaaa_pkcs111
+Description: OpenAAA PKCS11 Module
+Version: @PACKAGE_VERSION@
+Cflags: -I${incdir}
+Libs: -L${libdir} -laaa_pkcs11
+Requires: @DEPS@

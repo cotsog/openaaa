@@ -1,0 +1,3 @@
+[submodule "src/mem"]
+	path = src/mem
+	url = git://github.org/mem.git

@@ -1,0 +1,10 @@
+# pkg-config metadata for libaaa_moz
+libdir=@LIBDIR@
+incdir=.
+
+Name: libaaa_moz
+Description: AAA Mozzila Plugin 
+Version: @PACKAGE_VERSION@
+Cflags: -I${incdir}
+Libs: -L${libdir} -laaa_moz
+Requires: @DEPS@

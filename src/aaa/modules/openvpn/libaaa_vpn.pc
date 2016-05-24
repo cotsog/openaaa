@@ -1,0 +1,10 @@
+# pkg-config metadata for libaaa_vpn
+libdir=@LIBDIR@
+incdir=.
+
+Name: libaaa_vpn
+Description: AAA VPN Plugin 
+Version: @PACKAGE_VERSION@
+Cflags: -I${incdir}
+Libs: -L${libdir} -laaa_vpn
+Requires: @DEPS@

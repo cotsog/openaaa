@@ -1,0 +1,15 @@
+CFLAGS+=-I$(s)/src/compat/windows -fgnu89-inline
+LSHARED+=-mthreads -mms-bitfields 
+LDFLAGS+=-mthreads -mms-bitfields 
+LIBS+=-lcomdlg32 -lwinspool -lcomctl32 -lsetupapi -lwininet -lwin32spl \
+-lws2_32 -lpsapi -lshlwapi -ladvapi32 -lgdi32 -lpsapi \
+-lole32 -lshlwapi
+
+ifeq (${CPU_ARCH},x86_64)
+LIBS+=-lasm64
+LDFLAGS+=-L$(s)/build/arch/win-x86_64
+else
+LIBS+=-lasm32
+LDFLAGS+=-L$(s)/build/arch/win-x86
+endif
+.PHONY: $(LIBS)

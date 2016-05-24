@@ -1,0 +1,22 @@
+AAA Authentication, Authorization and Accounting library
+-------------------------------------------------------------------------------
+
+Configure targets:
+	config       - Configure package for host system
+
+Cleaning targets:
+	clean        - Remove most generated files
+	distclean    - Remove all generated files + config + editor backup + patch files
+
+Build targets:
+	all          - Build all targets
+	install      - Install
+	test         - Run tests
+
+Build options:
+	make V=0|1 [targets] 0 => quiet build (default), 1 => verbose build
+	make V=2   [targets] 2 => give reason for rebuild of target
+	make ASM=1 [targets] 0 => generate asm files
+
+Build cross compile options:
+	make config target=android

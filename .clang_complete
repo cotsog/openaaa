@@ -1,0 +1,21 @@
+let g:clang_user_options = -I. -I./src -I./obj -w
+-I.
+-I./src
+-I./obj
+-D_REENTRANT
+-D_GNU_SOURCE=1
+-D_POSIX_C_SOURCE=1
+-D_POSIX_SOURCE
+-D_GNU_SOURCE
+-I./src/sys
+-I./src/asm
+-I./src/compat/linux
+-I./include
+-I./include/openssl
+-I./include/nss
+-I./include/nspr
+-I/opt/apache2/include
+-I/usr/include/libusb-1.0
+-I./include
+-I./src/compat/windows
+-I-fPIC

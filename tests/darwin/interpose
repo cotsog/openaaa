@@ -1,0 +1,22 @@
+Yeah, DYLD_FORCE_FLAT_NAMESPACE is not strictly required, just most interesting uses I've seen of DYLD_INSERT_LIBRARIES have been to overload symbols and so have indeed used a flat namespace [...] " 
+
+You don't have to do such thing to override a symbol. The dynamic linker also provide some facility to automatically override a symbol when the injected library is loaded. 
+This is called interposition. 
+
+Basically, to override NSApplicationMain, you can do something like this: 
+
+#define DYLD_INTERPOSE(_replacment,_replacee) \ 
+__attribute__((used)) static struct{ const void* replacment; const void* replacee; } _interpose_##_replacee \ 
+__attribute__ ((section ("__DATA,__interpose"))) = { (const void*)(unsigned long)&_replacment, (const void*)(unsigned long)&_replacee }; 
+
+DYLD_INTERPOSE(_SAApplicationMain, NSApplicationMain); 
+
+And then: 
+
+static 
+int _SAApplicationMain(int argc, const char **argv) { 
+// My interposed code. 
+
+// call original implementation 
+  return NSApplicationMain(argc, argv); 
+} 

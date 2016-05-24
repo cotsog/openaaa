@@ -1,0 +1,18 @@
+TLS {
+
+# Keying Material Exporter [RFC-5705]
+
+# Label values beginning with "EXPERIMENTAL" MAY be used for private use 
+# without registration.  Note that exporter labels have the potential to
+# collide with existing PRF labels.  In order to prevent this, labels
+# SHOULD begin with "EXPORTER".  This is not a MUST because there are
+# existing uses that have labels which do not begin with this prefix.
+
+# The output is a pseudorandom bit string of length bytes generated from the 
+# master_secret.  
+
+KeyingMaterialExporter.Context "OpenAAA"
+KeyingMaterialExporter.Label   "EXPORTER_AAA"
+KeyingMaterialExporter.Length  "8"
+
+}

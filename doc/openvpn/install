@@ -1,0 +1,108 @@
+OPENVPN AAA TLS PLUGIN
+##############################################################################
+
+Download OpenVPN Installer
+https://openvpn.net/index.php/open-source/downloads.html
+
+Download OpenVPN AAA TLS Plugin
+http://aaa.anect.cz/openvpn-win32-client.tar.gz
+
+Decompress openvpn-win32-client.tar.gz and copy listed files to OpenVPN's
+install directory (default: C:\Program Files\OpenVPN)
+
+INSTALL WIN32 CLIENT
+------------------------------------------------------------------------------
+
+FILES:
+
+	$OPENVPN_INSTALL_DIR/bin/libaaa.dll
+	$OPENVPN_INSTALL_DIR/bin/libaaa_tls.dll
+	$OPENVPN_INSTALL_DIR/bin/libaaa_vpn.dll
+	$OPENVPN_INSTALL_DIR/bin/qrview.exe
+	$OPENVPN_INSTALL_DIR/bin/aaa
+
+	$OPENVPN_INSTALL_DIR/config/ca.pem
+	$OPENVPN_INSTALL_DIR/config/aaa-client.ovpn
+	$OPENVPN_INSTALL_DIR/config/aaa
+
+SAMPLE CONFIG
+
+	client
+	tls-client
+	reneg-sec 0
+	auth-user-pass aaa
+	auth-retry nointeract
+	# AAA Authority configuration
+	setenv aaa_handler   qrcode.exe
+	setenv aaa_authority android.alucid.eu
+	# AAA TLS OPENVPN Plugin
+	plugin libaaa_vpn.dll client
+	dev tun
+	proto udp
+	remote ovpn.example.com 1194
+	resolv-retry infinite
+	nobind
+	# Try to preserve some state across restarts.
+	persist-key
+	persist-tun
+	ca ../config/cacert.pem
+	verb 4
+
+INSTALL WIN32 SERVER
+------------------------------------------------------------------------------
+
+Decompress openvpn-win32-server.tar.gz and copy listed files to OpenVPN's
+install directory (default: C:\Program Files\OpenVPN)
+
+FILES:
+
+	$OPENVPN_INSTALL_DIR/bin/libaaa.dll
+	$OPENVPN_INSTALL_DIR/bin/libaaa_tls.dll
+	$OPENVPN_INSTALL_DIR/bin/libaaa_vpn.dll
+	$OPENVPN_INSTALL_DIR/bin/r3vpn.exe
+	$OPENVPN_INSTALL_DIR/bin/openvpn.exe          
+	$OPENVPN_INSTALL_DIR/bin/aaa
+
+	$OPENVPN_INSTALL_DIR/config/ca.pem
+        $OPENVPN_INSTALL_DIR/config/server.cert.pem
+        $OPENVPN_INSTALL_DIR/config/server.key.pem
+        $OPENVPN_INSTALL_DIR/config/dh1024.pem
+	$OPENVPN_INSTALL_DIR/config/aaa-server.ovpn
+	$OPENVPN_INSTALL_DIR/config/aaa
+
+SAMPLE CONFIG
+
+	local ovpn.example.com
+	tls-server
+	port 1194
+	proto udp
+
+	auth-user-pass-optional
+	client-cert-not-required
+	keying-material-exporter "EXPORTER_AAA" 8
+	reneg-sec 0
+	duplicate-cn
+
+	# AAA Authority configuration
+	setenv aaa_handler   r3vpn.exe
+	setenv aaa_authority android.alucid.eu
+
+	plugin libaaa_vpn.dll
+
+	server 10.8.0.0 255.255.255.0
+	dev tun
+
+	ca ../config/cacert.pem
+	cert ../config/server.cert.pem
+	key ../config/server.key.pem
+	dh ../config/dh1024.pem
+
+	ifconfig-pool-persist ipp.txt
+	keepalive 10 120
+
+	persist-key
+	persist-tun
+
+	status openvpn-status.log
+
+	verb 4

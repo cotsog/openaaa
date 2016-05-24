@@ -1,0 +1,10 @@
+# pkg-config metadata for libaaa
+libdir=@LIBDIR@
+incdir=.
+
+Name: AAA
+Description: aaa iterface library
+Version: @PACKAGE_VERSION@
+Cflags: -I${incdir}
+Libs: -L${libdir} -laaa
+Requires: @DEPS@

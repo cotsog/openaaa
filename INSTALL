@@ -1,0 +1,43 @@
+http://libintl-windows.sourceforge.net/
+
+git clone git://git.openssl.org/openssl.git
+
+export PKG_CONFIG_PATH=/usr/local/ssl/lib/pkgconfig
+export PATH=/usr/local/ssl/bin:$PATH
+export PATH=/opt/apache2/bin:$PATH
+
+git clone https://github.com/openssl/openssl
+
+cd ./openssl
+./config shared
+make
+sudo make install
+
+git clone git://git.apache.org/httpd.git
+
+./configure --prefix=/opt/apache2 --with-ssl=/usr/local/ssl --with-included-apr
+--enable-ssl --enable-pie --enable-mods-shared=all
+
+
+git clone https://github.com/apache/httpd.git
+
+cd ./httpd
+
+svn co http://svn.apache.org/repos/asf/apr/apr/branches/1.4.x srclib/apr
+svn co http://svn.apache.org/repos/asf/apr/apr-util/branches/1.5.x srclib/apr-util
+
+./buildconf --prefix=/opt/apache2 --with-included-apr
+./configure --prefix=/opt/apache2 --with-included-apr
+
+make
+sudo make install
+
+
+CYGWIN
+
+required:
+
+http://www.masm32.com/masmdl.htm 
+
+cygcheck -c -d|sed -e "1,2d" -e 's/ .*$//' > installedPackages
+setup.exe -q -P openssl, nss

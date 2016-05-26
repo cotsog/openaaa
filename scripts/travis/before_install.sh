@@ -18,12 +18,6 @@ if [ "$BUILD_TARGET" == "win64" ]; then
   export MINGW=/opt/mingw64 
   export PATH=$MINGW/bin:$PATH 
 fi
-if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-#  apt-get -qq update 
-#  apt-get install flex bison gperf libncurses-dev pkg-config 
-#  apt-get install binutils-mingw-w64-i686 gcc-mingw-w64-i686 
-#  apt-get install binutils-mingw-w64 gcc-mingw-w64 
-fi
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   unset CROSS_COMPILE 
   brew update 

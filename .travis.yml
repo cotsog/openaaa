@@ -1,0 +1,54 @@
+language: c
+env:
+  global:
+    - BUILD_BRANCH=$TRAVIS_BRANCH
+    - BUILD_ID=$TRAVIS_BUILD_ID
+matrix:
+  include:
+    - compiler: gcc
+      os: linux
+      env: TARGET=native
+    - compiler: gcc
+      os: linux
+      env: TARGET=win32
+    - compiler: gcc
+      os: linux
+      env: TARGET=win64
+    - compiler: clang
+      os: linux
+      env: TARGET=native
+    - compiler: gcc
+      os: osx
+      env: TARGET=native
+    - compiler: clang
+      os: osx
+      env: TARGET=native
+    - compiler: clang
+      os: osx
+      env: TARGET=native
+      osx_image: xcode7.3
+    - compiler: clang
+      os: osx
+      env: TARGET=native
+      osx_image: xcode7.2
+    - compiler: clang
+      os: osx
+      env: TARGET=native
+      osx_image: xcode7.1
+    - compiler: clang
+      os: osx
+      env: TARGET=native
+      osx_image: beta-xcode6.1
+
+before_install:
+- if [[ "$TARGET" == "win32" ]]; then unset CC ; export CROSS_COMPILE="i686-w64-mingw32-"; export MINGW=/opt/mingw64; export PATH=$MINGW/bin:$PATH; fi 
+- if [[ "$TARGET" == "win64" ]]; then unset CC ; export CROSS_COMPILE="x86_64-w64-mingw32-"; export MINGW=/opt/mingw64; export PATH=$MINGW/bin:$PATH; fi
+- unset TARGET;
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install flex bison gperf libncurses-dev pkg-config binutils-mingw-w64-i686 gcc-mingw-w64-i686 binutils-mingw-w64 gcc-mingw-w64; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update ; unset CROSS_COMPILE; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install flex bison gperftools ; fi
+script:
+- uname -a
+- make defconfig
+- make

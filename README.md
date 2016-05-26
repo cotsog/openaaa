@@ -6,9 +6,10 @@ Distributed Authentication, Authorization and Accouting library
 [![Build Status](https://travis-ci.org/n13l/kbuild.png?branch=master)](https://travis-ci.org/n13l/kbuild)
 [![Build Status](https://snap-ci.com/n13l/kbuild/branch/master/build_image)](https://snap-ci.com/n13l/kbuild/branch/master)
 
-##Specifications                                                                   
+## Specifications                                                                   
                                                                                    
-TLS side channel authentication and straightforward bindings of AAA information to application layer using well-defined mechanism.
+TLS side channel authentication and straightforward bindings of AAA information
+ to application layer using well-defined mechanism.
 https://github.com/n13l/openaaa/blob/master/doc/tls-sca
                                                                                    
 OpenVPN                                                                       

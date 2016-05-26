@@ -7,18 +7,19 @@
 
 Specifications:
 
-|ID               | URI   |
-|-----------------|-------|
-|**AAA-TLS-SCA**  | https://github.com/n13l/openaaa/blob/master/doc/tls-sca
+|ID               | URI                                                       |
+|-----------------|-----------------------------------------------------------|
+|**AAA-TLS-SCA**  | https://github.com/n13l/openaaa/blob/master/doc/tls-sca   |
+|-----------------|-----------------------------------------------------------|
 
-              
 Patches
 
-|Name             | Description |
-|-----------------|-------|
-|**AAA-TLS-SCA**  | Added support for TLS Keying Material Exporters [RFC-5705]   |
-|https://github.com/n13l/openaaa/blob/master/doc/openvpn/keying-material-exporter|
-                                                                    
+| Name            | Description                                               |
+|-----------------|-----------------------------------------------------------|
+| OpenVPN         | Added support for TLS Keying Material Exporters [RFC-5705]|
+|-----------------|-----------------------------------------------------------|
+|https://github.com/n13l/openaaa/blob/master/doc/openvpn/keying-material-exporter |
+
 Depends
 
 flex, bison, gperf, make

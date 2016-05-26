@@ -44,7 +44,7 @@ matrix:
       osx_image: beta-xcode6.1
 before_deploy:
 - export ARCHIVE=openaaa-$BUILD_TARGET.tar.gz
-- ./scripts/archive.sh $ARCHIVE
+- ./scripts/travis/archive.sh $ARCHIVE
 - echo "deploying $(ARCHIVE) to GitHub Releases"
 before_install:
 - source ./scripts/travis/before_install.sh

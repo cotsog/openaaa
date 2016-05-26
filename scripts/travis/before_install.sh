@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-./scripts/version.sh $TRAVIS_BRANCH
+./scripts/travis/version.sh $TRAVIS_BRANCH
 export VERSION="$BUILD_MAJOR"
 export PATCHLEVEL="$BUILD_MINOR"
 export SUBLEVEL="$BUILD_REVISION"

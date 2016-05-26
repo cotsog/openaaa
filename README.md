@@ -2,7 +2,7 @@
 
 |Branch      |Status   |
 |------------|---------|
-|master      | [![Build Status](https://travis-ci.org/n13l/kbuild.png?branch=master)](https://travis-ci.org/n13l/kbuild) [![Build Status](https://snap-ci.com/n13l/kbuild/branch/master/build_image)](https://snap-ci.com/n13l/kbuild/branch/master) |
+|master      | [![Build Status](https://travis-ci.org/n13l/openaaa.png?branch=master)](https://travis-ci.org/n13l/openaaa) [![Build Status](https://snap-ci.com/n13l/openaaa/branch/master/build_image)](https://snap-ci.com/n13l/openaaa/branch/master) |
 
 **Specifications**
 

@@ -1,5 +1,0 @@
-LIBAAA_PKCS11 {
-	global:
-		C_GetFunctionList;
-	local: *;
-};

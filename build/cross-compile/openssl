@@ -1,3 +1,0 @@
-export TARGET=i686-w64-mingw32
-export PATH=/usr/i686-w64-mingw32/sys-root/mingw/bin:$PATH
-CROSS_COMPILE="i686-w64-mingw32-" ./Configure mingw no-asm shared --prefix=/opt/mingw

@@ -1,4 +1,0 @@
-tls_aaa {
-	global: tls_aaa_module;
-	local: *;
-};

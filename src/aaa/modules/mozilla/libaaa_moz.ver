@@ -1,7 +1,0 @@
-LIBAAA_MOZ {
-	NP_Initialize;
-	NP_Shutdown;
-	NP_GetEntryPoints;
-	NP_GetMIMEDescription;
-	NP_GetValue;
-};

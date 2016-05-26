@@ -2,6 +2,18 @@ language:
   - c
   - java
   - python
+sudo: false
+addons:
+  apt:
+    packages:
+      - flex
+      - bison
+      - gperf
+      - pkg-config
+      - binutils-mingw-w64-i686 
+      - gcc-mingw-w64-i686
+      - binutils-mingw-w64 
+      - gcc-mingw-w64
 env:
   global:
     - BUILD_BRANCH=$TRAVIS_BRANCH

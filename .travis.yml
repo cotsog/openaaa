@@ -1,62 +1,62 @@
-language: 
-  - c
-  - java
-  - python
+language:
+- c
+- java
+- python
 sudo: false
 addons:
   apt:
     packages:
-      - flex
-      - bison
-      - gperf
-      - pkg-config
-      - binutils-mingw-w64-i686 
-      - gcc-mingw-w64-i686
-      - binutils-mingw-w64 
-      - gcc-mingw-w64
+    - flex
+    - bison
+    - gperf
+    - pkg-config
+    - binutils-mingw-w64-i686
+    - gcc-mingw-w64-i686
+    - binutils-mingw-w64
+    - gcc-mingw-w64
 env:
   global:
-    - BUILD_BRANCH=$TRAVIS_BRANCH
-    - BUILD_ID=$TRAVIS_BUILD_ID
+  - BUILD_BRANCH=$TRAVIS_BRANCH
+  - BUILD_ID=$TRAVIS_BUILD_ID
 matrix:
   include:
-    - compiler: gcc
-      os: linux
-      env: BUILD_TARGET=linux
-    - compiler: gcc
-      os: linux
-      env: BUILD_TARGET=win32
-    - compiler: gcc
-      os: linux
-      env: BUILD_TARGET=win64
-    - compiler: clang
-      os: linux
-      env: BUILD_TARGET=linux
-    - compiler: gcc
-      os: osx
-      env: BUILD_TARGET=osx
-    - compiler: clang
-      os: osx
-      env: BUILD_TARGET=osx
-    - compiler: clang
-      os: osx
-      env: BUILD_TARGET=osx
-      osx_image: xcode7.3
-    - compiler: clang
-      os: osx
-      env: BUILD_TARGET=osx
-      osx_image: xcode7.2
-    - compiler: clang
-      os: osx
-      env: BUILD_TARGET=osx
-      osx_image: xcode7.1
-    - compiler: clang
-      os: osx
-      env: BUILD_TARGET=osx
-      osx_image: beta-xcode6.1
+  - compiler: gcc
+    os: linux
+    env: BUILD_TARGET=linux
+  - compiler: gcc
+    os: linux
+    env: BUILD_TARGET=win32
+  - compiler: gcc
+    os: linux
+    env: BUILD_TARGET=win64
+  - compiler: clang
+    os: linux
+    env: BUILD_TARGET=linux
+  - compiler: gcc
+    os: osx
+    env: BUILD_TARGET=osx
+  - compiler: clang
+    os: osx
+    env: BUILD_TARGET=osx
+  - compiler: clang
+    os: osx
+    env: BUILD_TARGET=osx
+    osx_image: xcode7.3
+  - compiler: clang
+    os: osx
+    env: BUILD_TARGET=osx
+    osx_image: xcode7.2
+  - compiler: clang
+    os: osx
+    env: BUILD_TARGET=osx
+    osx_image: xcode7.1
+  - compiler: clang
+    os: osx
+    env: BUILD_TARGET=osx
+    osx_image: beta-xcode6.1
 before_deploy:
 - export ARCHIVE=openaaa-$BUILD_TARGET.tar.gz
-- ./scripts/travis/archive.sh $ARCHIVE
+- "./scripts/travis/archive.sh $ARCHIVE"
 - echo "deploying $(ARCHIVE) to GitHub Releases"
 before_install:
 - source ./scripts/travis/before_install.sh
@@ -65,11 +65,10 @@ script:
 - uname -a
 - make defconfig
 - make
-
 deploy:
   provider: releases
   api_key:
-    secure: OfYWkedmramdd2ML/dL+lQ+rYWLNaLWy1HfMxxyKwOZThIgWekxhy9EeqEVAisGXBU6qEe9FpsrOi3EUb3OwUNLmKz5b46fs8DpcjsFTKEGhkpXPDJJiwf5Sk0kOUvQp34euv5tBzMFrDxcB/vOpgFMjvWVx5j7BM+e8X0t3RMJANp7vEK5v71KjbbvERZTVaVAeFLrC5vcqcbwad/0fVGJYcvDXRmzs0W8Vc9v8OznfhbwtCj0f8HyfYoPkUXudzDYyDGoGbadKrbeLYYx/fQqlCeLxxLsfjTStYe3fGer2pPUJIBHUL3vvQRhBNr4t89zVvkUcmg7ems2/SG1gCeIX1E1WbnMxpNd98v1CP4Ku7LfJTkpjOv+0FWCbKj32AtoklOMzU8FQw/X/Ys4+Qpo42v4u4NVzWcDTR7y7TQcnOqqmhBbU5GJs+xz3p1bDm0Q2aOwqUGo7OACQ4my5xjjPLCNrV5/FFv3GYn4XutHZjvyLPie7AMArggITSTPZEMn3SYYdxyDp+VloW2vHfI3jByDFwjDGMr3TN6dZyGXXI9DWXeqizVKG5t9P3zc6Vda+VLCaq3AC2vl57RSooDEg3m3kPEEuI+P2omnHuCgAXuHVQaxw5aji+fk72G6zYuTcAMhJJQujWFIQxRtuSZwDZc7M7DOpg5xE7dTfrVA=
+    secure: jXSZuvXQzlli8DIEvDfIiqYYTgYGqjNCZaZzkV1xzNNzmLfzHR3Rp50DlkfBvg6AEQeeA5si2xBtXfYcjehgljdzdUxrMs3L0YUi7gG7WtzVU5v2GErgqWdpTWH+MAshPL6TAFGpnThdJPFADzhHgW4BdosKQQCOghnVZq4e3N1+9OkKBqlTF5xqmVruo9wlrh0JbImKJ/XPY/KcxQH1BkG53jWXnvF/6SjHshDXNdgzp6Jp41/ucJTVlScKTt5sNf+n44t9DFHFUrrcF7kS2c8UJfKZPN0zm9EnGw24eSoU/gzcLTG/5yUQQHtwID8jVrEFW53K9pypULEo6exbQI9e5Cy8vWMZm3NtI8CnMKE4N/H+rQIokrSP/SWPauLYFb7cRYPJpPdSR3bQ9XFV32V8PaoDI50B0xJvqyGgs3HcVeat6MU2oj7LFLkdkWkhkMm22PlSh+ot7+ukcK2GH4fI60nBbdGJNFAK21PGwUbcA+ThugsvaJwNzLmiF5XzRtkjAfsWGFs7EfP2XsCC3iUA42C7eoabpIQ/CU6I5KAWFlZSWV8b7MEU2YovVI5vEVhQ0SshqhoSGqgbOj65gwul/Z9FSldVSyjSHOl6wKiZSrkIugqdl8y8N26kBxrLD9fKqBRjVHKgVBqDd8rg9HM3Xx0pWscmjk0Y5IKTZ/k=
   file_glob: true
   file: "./*.tar.gz"
   skip_cleanup: true

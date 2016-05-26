@@ -47,7 +47,7 @@ before_deploy:
 - ./scripts/archive.sh $ARCHIVE
 - echo "deploying $(ARCHIVE) to GitHub Releases"
 before_install:
-- source ./scripts/travis/before_install.sh
+- ./scripts/travis/before_install.sh
 script:
 - printenv
 - uname -a

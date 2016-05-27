@@ -42,3 +42,5 @@ fi
 
 echo "build-version: $VERSION"
 echo "build-target: $BUILD_TARGET"
+echo "build-release: $BUILD_OS_RELEASE"
+echo "build-name: $BUILD_OS_NAME"

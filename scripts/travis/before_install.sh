@@ -50,6 +50,7 @@ fi
 
 echo "build-version: $VERSION"
 echo "build-target: $BUILD_TARGET"
+echo "build-branch: $TRAVIS_BRANCH"
 echo "build-release: $BUILD_OS_RELEASE"
 echo "build-name: $BUILD_OS_NAME"
 echo "build-release: $BUILD_MAJOR $BUILD_MINOR $BUILD_REVISION"

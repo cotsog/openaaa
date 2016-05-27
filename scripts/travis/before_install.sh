@@ -13,6 +13,7 @@ if [ $num = *[[:digit:]]* ]; then export BUILD_REVISION=$num ; fi
 
 export BUILD_OS_RELEASE=$(uname -r)
 export BUILD_OS_NAME=$(uname -s)
+export BUILD_OS_ARCH=$(uname -m)
 
 export VERSION="$BUILD_MAJOR"
 export PATCHLEVEL="$BUILD_MINOR"
@@ -24,7 +25,8 @@ if [ "$BUILD_TARGET" == "win32" ]; then
   export MINGW=/opt/mingw64 
   export PATH=$PATH:$MINGW/bin
   export BUILD_OS_NAME="win"
-  export BUILD_OS_RELEASE="x86"
+  export BUILD_OS_ARCH="x86"
+  export BUILD_OS_RELEASE="generic"
 fi 
 if [ "$BUILD_TARGET" == "win64" ]; then 
   unset CC 
@@ -32,7 +34,8 @@ if [ "$BUILD_TARGET" == "win64" ]; then
   export MINGW=/opt/mingw64 
   export PATH=$PATH:$MINGW/bin
   export BUILD_OS_NAME="win"
-  export BUILD_OS_RELEASE="x86_64"
+  export BUILD_OS_ARCH="x86_64"
+  export BUILD_OS_RELEASE="generic"
 fi
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   unset CROSS_COMPILE 

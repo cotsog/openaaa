@@ -55,7 +55,7 @@ matrix:
     env: BUILD_TARGET=osx BUILD_DEPLOY=1
     osx_image: beta-xcode6.1
 before_deploy:
-- export BUILD_ARCHIVE=openaaa-$BUILD_MAJOR-$BUILD_MINOR-$BUILD_REVISION-$BUILD_OS_NAME-$BUILD_OS_RELEASE.tar.gz
+- export BUILD_ARCHIVE=openaaa-$BUILD_MAJOR.$BUILD_MINOR.$BUILD_REVISION-$BUILD_OS_NAME-$BUILD_OS_ARCH-$BUILD_OS_RELEASE.tar.gz
 - ./scripts/travis/archive.sh $BUILD_ARCHIVE
 before_install:
 - source ./scripts/travis/before_install.sh

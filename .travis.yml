@@ -42,10 +42,13 @@ env:
     - BUILD_DEPLOY=0 BUILD_TARGET=linux OS=debian DIST=sid PACK=deb
     - BUILD_DEPLOY=0 BUILD_TARGET=linux PACK=none
     - BUILD_DEPLOY=0 BUILD_TARGET=osx PACK=none
-    - BUILD_DEPLOY=0 BUILD_TARGET=win32 PACK=none
-    - BUILD_DEPLOY=0 BUILD_TARGET=win64 PACK=none
+    - BUILD_DEPLOY=1 BUILD_TARGET=win32 PACK=none
+    - BUILD_DEPLOY=1 BUILD_TARGET=win64 PACK=none
 
 matrix:
+  include:
+    - os: osx
+      osx_image: xcode7.3
   allow_failures:
     - env: BUILD_DEPLOY=0 BUILD_TARGET=linux OS=el DIST=6 PACK=rpm
     - env: BUILD_DEPLOY=0 BUILD_TARGET=linux OS=el DIST=7 PACK=rpm
@@ -118,13 +121,13 @@ matrix:
       os: osx
     - env: BUILD_DEPLOY=0 BUILD_TARGET=osx PACK=none
       os: linux
-    - env: BUILD_DEPLOY=0 BUILD_TARGET=win32 PACK=none
+    - env: BUILD_DEPLOY=1 BUILD_TARGET=win32 PACK=none
       os: osx
-    - env: BUILD_DEPLOY=0 BUILD_TARGET=win64 PACK=none 
+    - env: BUILD_DEPLOY=1 BUILD_TARGET=win64 PACK=none 
       os: osx
-    - env: BUILD_DEPLOY=0 BUILD_TARGET=win32 PACK=none
+    - env: BUILD_DEPLOY=1 BUILD_TARGET=win32 PACK=none
       compiler: clang
-    - env: BUILD_DEPLOY=0 BUILD_TARGET=win64 PACK=none
+    - env: BUILD_DEPLOY=1 BUILD_TARGET=win64 PACK=none
       compiler: clang
 
 before_deploy:

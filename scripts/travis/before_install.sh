@@ -26,6 +26,7 @@ if [ "$BUILD_TARGET" == "win32" ]; then
   export MINGW=/opt/mingw64 
   export PATH=$MINGW/bin:$PATH 
   export BUILD_OS_NAME="win"
+  export BUILD_OS_RELEASE="i686"
 fi 
 if [ "$BUILD_TARGET" == "win64" ]; then 
   unset CC 
@@ -33,6 +34,7 @@ if [ "$BUILD_TARGET" == "win64" ]; then
   export MINGW=/opt/mingw64 
   export PATH=$MINGW/bin:$PATH 
   export BUILD_OS_NAME="win"
+  export BUILD_OS_RELEASE="x86_64"
 fi
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   unset CROSS_COMPILE 

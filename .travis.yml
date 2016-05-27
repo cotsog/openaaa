@@ -25,10 +25,10 @@ matrix:
     env: BUILD_TARGET=linux
   - compiler: gcc
     os: linux
-    env: BUILD_TARGET=win32
+    env: BUILD_TARGET=win32 BUILD_DEPLOY=1
   - compiler: gcc
     os: linux
-    env: BUILD_TARGET=win64
+    env: BUILD_TARGET=win64 BUILD_DEPLOY=1
   - compiler: clang
     os: linux
     env: BUILD_TARGET=linux
@@ -76,3 +76,4 @@ deploy:
   on:
     tags: yes
     repo: n13l/openaaa
+    condition: "$BUILD_DEPLOY = 1"

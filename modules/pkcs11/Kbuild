@@ -1,7 +1,7 @@
 obj-m := entry.o
 entry-objs := pkcs11.o
 
-lib                := aaa-bridge-pkcs11
+lib                := aaa-pkcs11
 libname            := lib$(lib)-$(PACKAGEVERSION)
 
 always             += $(if $(CONFIG_MODULES),$(libname).$(so),)

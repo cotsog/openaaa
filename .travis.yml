@@ -40,7 +40,10 @@ env:
     - BUILD_DEPLOY=0 BUILD_TARGET=linux OS=debian DIST=wheezy PACK=deb
     - BUILD_DEPLOY=0 BUILD_TARGET=linux OS=debian DIST=stretch PACK=deb
     - BUILD_DEPLOY=0 BUILD_TARGET=linux OS=debian DIST=sid PACK=deb
-    - PACK=none
+    - BUILD_DEPLOY=0 BUILD_TARGET=linux PACK=none
+    - BUILD_DEPLOY=0 BUILD_TARGET=osx PACK=none
+    - BUILD_DEPLOY=0 BUILD_TARGET=win32 PACK=none
+    - BUILD_DEPLOY=0 BUILD_TARGET=win64 PACK=none
 
 matrix:
   allow_failures:

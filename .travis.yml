@@ -22,7 +22,7 @@ matrix:
   include:
   - compiler: gcc
     os: linux
-    env: BUILD_TARGET=linux
+    env: BUILD_TARGET=linux BUILD_DEPLOY=0
   - compiler: gcc
     os: linux
     env: BUILD_TARGET=win32 BUILD_DEPLOY=1
@@ -31,31 +31,32 @@ matrix:
     env: BUILD_TARGET=win64 BUILD_DEPLOY=1
   - compiler: clang
     os: linux
-    env: BUILD_TARGET=linux
+    env: BUILD_TARGET=linux BUILD_DEPLOY=0
   - compiler: gcc
     os: osx
-    env: BUILD_TARGET=osx
+    env: BUILD_TARGET=osx BUILD_DEPLOY=0
   - compiler: clang
     os: osx
-    env: BUILD_TARGET=osx
+    env: BUILD_TARGET=osx BUILD_DEPLOY=0
   - compiler: clang
     os: osx
-    env: BUILD_TARGET=osx
+    env: BUILD_TARGET=osx BUILD_DEPLOY=1
     osx_image: xcode7.3
   - compiler: clang
     os: osx
-    env: BUILD_TARGET=osx
+    env: BUILD_TARGET=osx BUILD_DEPLOY=0
     osx_image: xcode7.2
   - compiler: clang
     os: osx
-    env: BUILD_TARGET=osx
+    env: BUILD_TARGET=osx BUILD_DEPLOY=0
     osx_image: xcode7.1
   - compiler: clang
     os: osx
     env: BUILD_TARGET=osx
-    osx_image: beta-xcode6.1
+    osx_image: beta-xcode6.1 BUILD_DEPLOY=1
 before_deploy:
-- ./scripts/travis/archive.sh openaaa-$BUILD_OS_NAME-$BUILD_OS_RELEASE.tar.gz
+- export BUILD_ARCHIVE=openaaa-$BUILD_MAJOR-$BUILD_MINOR-$BUILD_REVISION-$BUILD_OS_NAME-$BUILD_OS_RELEASE.tar.gz
+- ./scripts/travis/archive.sh $BUILD_ARCHIVE
 before_install:
 - source ./scripts/travis/before_install.sh
 script:
@@ -70,8 +71,7 @@ deploy:
   provider: releases
   api_key:
     secure: jXSZuvXQzlli8DIEvDfIiqYYTgYGqjNCZaZzkV1xzNNzmLfzHR3Rp50DlkfBvg6AEQeeA5si2xBtXfYcjehgljdzdUxrMs3L0YUi7gG7WtzVU5v2GErgqWdpTWH+MAshPL6TAFGpnThdJPFADzhHgW4BdosKQQCOghnVZq4e3N1+9OkKBqlTF5xqmVruo9wlrh0JbImKJ/XPY/KcxQH1BkG53jWXnvF/6SjHshDXNdgzp6Jp41/ucJTVlScKTt5sNf+n44t9DFHFUrrcF7kS2c8UJfKZPN0zm9EnGw24eSoU/gzcLTG/5yUQQHtwID8jVrEFW53K9pypULEo6exbQI9e5Cy8vWMZm3NtI8CnMKE4N/H+rQIokrSP/SWPauLYFb7cRYPJpPdSR3bQ9XFV32V8PaoDI50B0xJvqyGgs3HcVeat6MU2oj7LFLkdkWkhkMm22PlSh+ot7+ukcK2GH4fI60nBbdGJNFAK21PGwUbcA+ThugsvaJwNzLmiF5XzRtkjAfsWGFs7EfP2XsCC3iUA42C7eoabpIQ/CU6I5KAWFlZSWV8b7MEU2YovVI5vEVhQ0SshqhoSGqgbOj65gwul/Z9FSldVSyjSHOl6wKiZSrkIugqdl8y8N26kBxrLD9fKqBRjVHKgVBqDd8rg9HM3Xx0pWscmjk0Y5IKTZ/k=
-  file_glob: true
-  file: "./*.tar.gz"
+  file: "$BUILD_ARCHIVE"
   skip_cleanup: true
   on:
     tags: yes

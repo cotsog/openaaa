@@ -24,7 +24,7 @@ if [ "$BUILD_TARGET" == "win32" ]; then
   export MINGW=/opt/mingw64 
   export PATH=$PATH:$MINGW/bin
   export BUILD_OS_NAME="win"
-  export BUILD_OS_RELEASE="i686"
+  export BUILD_OS_RELEASE="x86"
 fi 
 if [ "$BUILD_TARGET" == "win64" ]; then 
   unset CC 
@@ -36,8 +36,13 @@ if [ "$BUILD_TARGET" == "win64" ]; then
 fi
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   unset CROSS_COMPILE 
+  export BUILD_OS_NAME="osx"
   brew update 
   brew install flex bison gperftools 
+fi
+
+if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+  export BUILD_OS_NAME="linux"
 fi
 
 echo "build-version: $VERSION"

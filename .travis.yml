@@ -62,6 +62,10 @@ script:
 - uname -a
 - make defconfig
 - make
+notifications:
+  on_success: never
+  on_failure: never
+  email: false
 deploy:
   provider: releases
   api_key:

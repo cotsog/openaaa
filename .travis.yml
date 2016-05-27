@@ -48,7 +48,8 @@ env:
 matrix:
   include:
     - os: osx
-      osx_image: xcode7.3
+      - compiler: clang
+        osx_image: xcode7.3
   allow_failures:
     - env: BUILD_DEPLOY=0 BUILD_TARGET=linux OS=el DIST=6 PACK=rpm
     - env: BUILD_DEPLOY=0 BUILD_TARGET=linux OS=el DIST=7 PACK=rpm

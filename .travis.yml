@@ -116,6 +116,8 @@ matrix:
       os: osx
     - env: BUILD_DEPLOY=0 BUILD_TARGET=linux PACK=none
       os: osx
+    - env: BUILD_DEPLOY=0 BUILD_TARGET=osx PACK=none
+      os: linux
     - env: BUILD_DEPLOY=0 BUILD_TARGET=win32 PACK=none
       os: osx
     - env: BUILD_DEPLOY=0 BUILD_TARGET=win64 PACK=none 

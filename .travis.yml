@@ -52,8 +52,8 @@ matrix:
     osx_image: xcode7.1
   - compiler: clang
     os: osx
-    env: BUILD_TARGET=osx
-    osx_image: beta-xcode6.1 BUILD_DEPLOY=1
+    env: BUILD_TARGET=osx BUILD_DEPLOY=1
+    osx_image: beta-xcode6.1
 before_deploy:
 - export BUILD_ARCHIVE=openaaa-$BUILD_MAJOR-$BUILD_MINOR-$BUILD_REVISION-$BUILD_OS_NAME-$BUILD_OS_RELEASE.tar.gz
 - ./scripts/travis/archive.sh $BUILD_ARCHIVE

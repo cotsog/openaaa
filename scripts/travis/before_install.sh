@@ -41,7 +41,7 @@ if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   brew install flex bison gperftools 
 fi
 
-if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+if [ "$BUILD_TARGET" == "linux" ]; then
   export BUILD_OS_NAME="linux"
 fi
 

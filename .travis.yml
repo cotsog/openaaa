@@ -120,8 +120,13 @@ matrix:
       os: osx
     - env: BUILD_DEPLOY=0 BUILD_TARGET=win64 PACK=none 
       os: osx
+    - env: BUILD_DEPLOY=0 BUILD_TARGET=win32 PACK=none
+      compiler: clang
+    - env: BUILD_DEPLOY=0 BUILD_TARGET=win64 PACK=none
+      compiler: clang
     - os: osx
       compiler: gcc
+
 before_deploy:
 - export BUILD_ARCHIVE=openaaa-$BUILD_MAJOR.$BUILD_MINOR.$BUILD_REVISION-$BUILD_OS_NAME-$BUILD_OS_ARCH-$BUILD_OS_RELEASE.tar.gz
 - ./scripts/travis/archive.sh $BUILD_ARCHIVE

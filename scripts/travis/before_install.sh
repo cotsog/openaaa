@@ -48,7 +48,13 @@ if [ "$BUILD_TARGET" == "linux" ]; then
   export BUILD_OS_NAME="linux"
 fi
 
+export VERSION="$BUILD_MAJOR"
+export PATCHLEVEL="$BUILD_MINOR"
+export SUBLEVEL="$BUILD_REVISION"
+
 echo "build-version: $VERSION"
+echo "build-patchlevel: $PATCHLEVEL"
+echo "build-sublevel: $SUBLEVEL"
 echo "build-target: $BUILD_TARGET"
 echo "build-branch: $TRAVIS_BRANCH"
 echo "build-release: $BUILD_OS_RELEASE"

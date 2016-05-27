@@ -8,6 +8,8 @@
 
 | ID              | URI                                                       |
 |-----------------|-----------------------------------------------------------|
-| AAA-TLS-SCA     | TLS side channel authentication and straightforward bindings of AAA information to application layer using well-defined mechanism. https://github.com/n13l/openaaa/blob/master/doc/tls-sca |
-| OPENVPN-RFC5705 | Added support for TLS Keying Material Exporters [RFC-5705] https://github.com/n13l/openaaa/blob/master/doc/openvpn/keying-material-exporter |
+| AAA-TLS-SCA     | TLS side channel authentication and straightforward bindings of AAA information to application layer using well-defined mechanism. 
+https://github.com/n13l/openaaa/blob/master/doc/tls-sca |
+| OPENVPN-RFC5705 | Added support for TLS Keying Material Exporters [RFC-5705] 
+https://github.com/n13l/openaaa/blob/master/doc/openvpn/keying-material-exporter |
 
